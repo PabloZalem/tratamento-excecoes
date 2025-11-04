@@ -12,4 +12,9 @@ public class ApiController {
     public String Hello() {
         return "Hello World!";
     }
+
+    @GetMapping("/myerror")
+    public String MyError() {
+        throw new RuntimeException("This is a custom error message from MyError endpoint.");
+    }
 }
