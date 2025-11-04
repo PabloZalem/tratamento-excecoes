@@ -16,4 +16,12 @@ public class ApiExcHandlers {
         final var aResponse = ResponseEntity.badRequest().body(aMessage);
         return aResponse;
     }
+
+
+    @ExceptionHandler(ResourceRuntimeException.class)
+    public ResponseEntity handleRespondeNotFound(ResourceRuntimeException ex, HttpServletRequest request) {
+        final var aMessage = "Recurso nao encontrado: " + ex.getMessage();
+        final var aResponse = ResponseEntity.status(HttpStatus.NOT_FOUND).body(aMessage);
+        return aResponse;
+    }
 }
